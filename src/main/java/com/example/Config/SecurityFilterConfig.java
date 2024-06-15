@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @AllArgsConstructor
 public class SecurityFilterConfig {
+
     private JwtAuthenticationEntryPoint point;
     private JWTAuthenticationFilter filter;
 
@@ -20,7 +21,7 @@ public class SecurityFilterConfig {
     public SecurityFilterChain filterChain(HttpSecurity security) throws Exception {
         return security.csrf(csrf-> csrf.disable())
                 .cors(cors-> cors.disable())
-                .authorizeHttpRequests(auth->auth.requestMatchers("/authenticate").permitAll()
+                .authorizeHttpRequests(auth->auth.requestMatchers("/authenticate","/welcome/register","/welcome/login").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(ex ->ex.authenticationEntryPoint(point))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -1,8 +1,8 @@
 package com.example.Controller;
 
+import com.example.jwt.JwtHelper;
 import com.example.Model.JwtRequest;
 import com.example.Model.JwtResponse;
-import com.example.jwt.JwtHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 public class JwtAuthenticationController {
+
     private UserDetailsService userDetailsService;
 
     private AuthenticationManager manager;
